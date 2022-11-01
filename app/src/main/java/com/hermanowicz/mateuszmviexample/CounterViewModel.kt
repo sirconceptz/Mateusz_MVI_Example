@@ -18,7 +18,7 @@ typealias CounterProcessor = Processor<CounterEvents, CounterState, Unit>
 @HiltViewModel
 class CounterViewModel @Inject constructor(
     private val increaseCounterUseCaseImpl: IncreaseCounterUseCaseImpl,
-    private val observeCounterUseCaseImpl: ObserveCounterUseCaseImpl
+    observeCounterUseCaseImpl: ObserveCounterUseCaseImpl
 ) : ViewModel() {
 
     val counter: LiveData<Int> = observeCounterUseCaseImpl.observeCounter()
@@ -26,8 +26,11 @@ class CounterViewModel @Inject constructor(
     val processor: CounterProcessor = processor(CounterState()){ event ->
         when(event){
             is CounterEvents.IncreaseCounter -> flow{
-                increaseCounterUseCaseImpl.increaseCounter(state.value.count)
+                increaseCounterUseCaseImpl.increaseCounter(event.count)
                 emit(CounterPartialState.IncreaseCounterPartialState)
+            }
+            is CounterEvents.ObserveCounter -> flow{
+                emit(CounterPartialState.ObserveCounterPartialState)
             }
         }
     }

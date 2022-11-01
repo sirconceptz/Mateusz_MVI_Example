@@ -8,4 +8,10 @@ sealed interface CounterPartialState : PartialState<CounterState>{
             return oldState.copy(count = oldState.count + 1)
         }
     }
+
+    object ObserveCounterPartialState : CounterPartialState {
+        override fun reduce(oldState: CounterState) : CounterState {
+            return oldState.copy(count = oldState.count + 1)
+        }
+    }
 }
