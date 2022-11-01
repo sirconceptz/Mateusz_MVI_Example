@@ -1,4 +1,4 @@
 <resources>
-    <string name="app_name">Mateusz MVI Example</string>
+    <string name="app_name">MVI Counter - Mateusz</string>
     <string name="plusSign">+</string>
 </resources>

@@ -23,13 +23,14 @@ class CounterViewModel @Inject constructor(
 
     val counter: LiveData<Int> = observeCounterUseCaseImpl.observeCounter()
 
-    val processor: CounterProcessor = processor(CounterState()){ event ->
-        when(event){
-            is CounterEvents.IncreaseCounter -> flow{
+    val processor: CounterProcessor = processor(CounterState()) { event ->
+        when (event) {
+            is CounterEvents.IncreaseCounter -> flow {
                 increaseCounterUseCaseImpl.increaseCounter(event.count)
                 emit(CounterPartialState.IncreaseCounterPartialState)
             }
-            is CounterEvents.ObserveCounter -> flow{
+            is CounterEvents.ObserveCounter -> flow {
+                state.value.count = event.count
                 emit(CounterPartialState.ObserveCounterPartialState)
             }
         }

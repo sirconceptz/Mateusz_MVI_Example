@@ -1,7 +1,6 @@
 package com.hermanowicz.mateuszmviexample.module
 
 import android.content.Context
-import com.hermanowicz.mateuszmviexample.data.local.db.CounterDao
 import com.hermanowicz.mateuszmviexample.data.local.db.CounterDb
 import com.hermanowicz.mateuszmviexample.data.repository.CounterRepositoryImpl
 import com.hermanowicz.mateuszmviexample.domain.repositories.CounterRepository
@@ -18,8 +17,8 @@ class AppModule {
 
     @Provides
     @Singleton
-    fun provideCounterRepository(@ApplicationContext context: Context): CounterRepository{
-        val counterDb : CounterDb = CounterDb.getInstance(context)
+    fun provideCounterRepository(@ApplicationContext context: Context): CounterRepository {
+        val counterDb: CounterDb = CounterDb.getInstance(context)
         val counterDao = counterDb.counterDao()
         return CounterRepositoryImpl(counterDao)
     }

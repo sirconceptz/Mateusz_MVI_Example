@@ -10,7 +10,7 @@ class CounterRepositoryImpl @Inject constructor(
     private val counterDao: CounterDao
 ) : CounterRepository {
 
-    override fun getCounter() : LiveData<Int> {
+    override fun getCounter(): LiveData<Int> {
         return counterDao.getCount()
     }
 
