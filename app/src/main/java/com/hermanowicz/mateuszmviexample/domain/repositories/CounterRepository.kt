@@ -1,9 +1,9 @@
 package com.hermanowicz.mateuszmviexample.domain.repositories
 
-import androidx.lifecycle.LiveData
+import kotlinx.coroutines.flow.Flow
 
 interface CounterRepository {
-    fun getCounter(): LiveData<Int>
+    fun observeCounter(): Flow<Int>
 
-    fun increaseCounter(currentValue: Int)
+    suspend fun increaseCounter(currentValue: Int)
 }

@@ -1,20 +1,17 @@
 package com.hermanowicz.mateuszmviexample.data.local.db
 
-import androidx.lifecycle.LiveData
 import androidx.room.Dao
 import androidx.room.Insert
 import androidx.room.Query
+import androidx.room.Update
 import com.hermanowicz.mateuszmviexample.data.model.Counter
-
+import kotlinx.coroutines.flow.Flow
 
 @Dao
 interface CounterDao {
-    @Query("SELECT COUNT(value) FROM counter")
-    fun getCount(): LiveData<Int>
-
-    @Query("SELECT COUNT(value) FROM counter")
-    fun getCountValue(): Int
+    @Query("SELECT COUNT(*) FROM counter")
+    fun observeCounter(): Flow<Int>
 
     @Insert
-    fun insertOrUpdateCounter(vararg counter: Counter)
+    suspend fun insertOrUpdateCounter(counter: Counter)
 }

@@ -8,7 +8,7 @@ class IncreaseCounterUseCaseImpl @Inject constructor(
     private val counterRepository: CounterRepository
 ) : IncreaseCounterUseCase {
 
-    override fun increaseCounter(currentValue: Int) {
+    override suspend fun increaseCounter(currentValue: Int) {
         counterRepository.increaseCounter(currentValue)
     }
 }

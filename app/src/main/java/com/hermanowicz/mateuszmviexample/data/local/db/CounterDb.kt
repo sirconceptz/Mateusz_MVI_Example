@@ -23,7 +23,7 @@ abstract class CounterDb : RoomDatabase() {
                         context.applicationContext,
                         CounterDb::class.java, "CounterDb.db"
                     )
-                        .allowMainThreadQueries()
+//                        .allowMainThreadQueries()
                         .build()
                 }
                 return INSTANCE as CounterDb

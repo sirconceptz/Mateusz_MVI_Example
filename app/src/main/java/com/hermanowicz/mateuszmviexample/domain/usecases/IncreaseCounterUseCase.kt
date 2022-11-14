@@ -1,5 +1,5 @@
 package com.hermanowicz.mateuszmviexample.domain.usecases
 
 interface IncreaseCounterUseCase {
-    fun increaseCounter(currentValue: Int)
+    suspend fun increaseCounter(currentValue: Int)
 }

@@ -1,7 +1,9 @@
 package com.hermanowicz.mateuszmviexample.domain.usecases
 
-import androidx.lifecycle.LiveData
+import com.hermanowicz.mateuszmviexample.data.model.Counter
+import kotlinx.coroutines.flow.Flow
+
 
 interface ObserveCounterUseCase {
-    fun observeCounter(): LiveData<Int>
+    fun observeCounter(): Flow<Int>
 }

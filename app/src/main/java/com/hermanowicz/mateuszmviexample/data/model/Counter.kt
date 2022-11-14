@@ -6,5 +6,4 @@ import androidx.room.PrimaryKey
 @Entity
 data class Counter(
     @PrimaryKey(autoGenerate = true) val id: Int,
-    val value: Int
 )
